@@ -13,7 +13,7 @@ body {
 .navbar {
     justify-content: center;
     position: sticky;
-
+    text-align: center;
 }
 
 h1 {
@@ -22,8 +22,9 @@ h1 {
 
 .card {
     margin: 2px 0 2px 0;
+
 }
 
 .card-header {
-    
+
 }
