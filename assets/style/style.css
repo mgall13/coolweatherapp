@@ -11,5 +11,19 @@ body {
 }
 
 .navbar {
+    justify-content: center;
+    position: sticky;
+
+}
+
+h1 {
+   text-align: center;
+}
+
+.card {
+    margin: 2px 0 2px 0;
+}
+
+.card-header {
     
 }
