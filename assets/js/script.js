@@ -57,5 +57,5 @@ function displayWeather(data) {
     humidityEl.innerText = "Humidity: " + humidity;
 };
 
-getWeatherInfo(cityHistory[0]);
-searchBtn.onclick(findCity);
+getWeatherInfo("Austin");
+searchBtn.addEventListener("click", findCity)
