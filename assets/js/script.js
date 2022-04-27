@@ -19,11 +19,13 @@ resultEl.append(nameEl, iconEl, tempEl, humidityEl, windEl);
 
 
 function getWeatherInfo(city, data) {
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid" + apiKey;
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + apiKey;
 
    fetch(apiUrl).then(function(response) {
        if (response.ok) {
-           alert("Couldn't connect to server!")
+           response.json().then(function(data) {
+               displayWeather(data, city)
+           })
        }
    })
 };
@@ -39,6 +41,8 @@ function findCity(event) {
     } else {
         alert('City not found!')
     }
+
+    cityHistory.push(cityName);
 };
 
 function displayWeather(data) {
@@ -53,5 +57,5 @@ function displayWeather(data) {
     humidityEl.innerText = "Humidity: " + humidity;
 };
 
-getWeatherInfo();
-searchBtn.addEventListener('click', findCity);
+getWeatherInfo(cityHistory[0]);
+searchBtn.onclick(findCity);
