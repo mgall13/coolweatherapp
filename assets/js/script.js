@@ -1,32 +1,57 @@
-var apiKey = "5099d8d692ae44c13e96573330db8ca4"
+var apiKey = '83985d498abbfbdf1098ff4f10700ec0'
+
+var cityHistory = [];
 
 var resultEl = document.getElementById('result');
 var renderCityEl = document.getElementById('city-form');
 var renderInputEl = document.getElementById('cityname');
 var searchBtn = document.getElementById('searchBtn');
 
-function getWeatherInfo (city) {
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q" + city + "&units=imperial&appid=" + apiKey;
+var nameEl = document.createElement('h3');
+nameEl.setAttribute('class', 'city-name');
+var tempEl = document.createElement('p');
+var humidityEl = document.createElement('p');
+var windEl = document.createElement('p');
+var iconEl = document.createElement('img');
+iconEl.setAttribute('src', '');
 
-    fetch(apiUrl).then(function(city) {
-        if (city.ok) {
-            city.json().then(function(data) {
-                console.log(data);
-                displayWeather(data, city);
-            });
-        } else {
-            alert('Error city was not found!')
-        }
-    })
-    .catch(function(err) {
-        alert("API route not found.")
-    })
+resultEl.append(nameEl, iconEl, tempEl, humidityEl, windEl);
+
+
+function getWeatherInfo(city, data) {
+    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid" + apiKey;
+
+   fetch(apiUrl).then(function(response) {
+       if (response.ok) {
+           alert("Couldn't connect to server!")
+       }
+   })
+};
+
+function findCity(event) {
+    event.preventDefault();
+
+    var cityName = renderInputEl.value.trim();
+
+    if(cityName) {
+        getWeatherInfo(cityName);
+        renderInputEl.value="";
+    } else {
+        alert('City not found!')
+    }
 };
 
 function displayWeather(data) {
     var {name} = data;
     var {icon} = data.weather[0];
     var {temp, humidity} = data.main;
-    var {speed} = data.wind;
-    console.log(name, icon, temp, humidity, speed)
-}
+    console.log(name, icon, temp, humidity)
+
+    nameEl.innerText = 'Current weather in ' + name;
+    iconEl.src = "https://openweathermap.org/img/wn/" + icon + "@2x.png"
+    tempEl.innerText = "Temp: " + temp + "°F";
+    humidityEl.innerText = "Humidity: " + humidity;
+};
+
+getWeatherInfo();
+searchBtn.addEventListener('click', findCity);

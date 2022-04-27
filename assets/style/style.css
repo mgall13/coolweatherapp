@@ -11,12 +11,11 @@ body {
 }
 
 .navbar {
-    justify-content: center;
-    position: sticky;
     text-align: center;
+    display: none;
 }
 
-h1 {
+h1, h3 {
    text-align: center;
 }
 
@@ -25,6 +24,6 @@ h1 {
 
 }
 
-.card-header {
-
+.card-body {
+    text-align: center;
 }
