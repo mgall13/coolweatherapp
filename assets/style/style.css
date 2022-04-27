@@ -8,6 +8,7 @@ body {
     margin: 0;
     line-height: 1.25;
     font-size: 16px;
+    background-image: url(https://img.freepik.com/free-vector/gradient-dynamic-blue-lines-background_23-2148995756.jpg?t=st=1651061757~exp=1651062357~hmac=117776e3fc509f49571002a88a361d6cc684ea8f9a75eb5bb6b38d6ca98149f5&w=826);
 }
 
 .navbar {
@@ -25,5 +26,9 @@ h1, h3 {
 }
 
 .card-body {
+    text-align: center;
+}
+
+.resultCard {
     text-align: center;
 }

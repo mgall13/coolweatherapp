@@ -49,7 +49,6 @@ function displayWeather(data) {
     var {name} = data;
     var {icon} = data.weather[0];
     var {temp, humidity} = data.main;
-    console.log(name, icon, temp, humidity)
 
     nameEl.innerText = 'Current weather in ' + name;
     iconEl.src = "https://openweathermap.org/img/wn/" + icon + "@2x.png"
